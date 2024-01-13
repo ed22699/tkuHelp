@@ -1,4 +1,35 @@
 # TKU project
+## How you should structure your version control
+```mermaid
+---
+title: Version Control example
+---
+gitGraph
+   commit
+   branch part1
+   checkout part1
+   branch feature
+   commit
+   commit
+   checkout part1
+   merge feature
+   commit
+   checkout main
+   merge part1
+   commit
+   branch part2
+   checkout part2
+   branch feature2
+   commit
+   commit
+   checkout part2
+   merge feature2
+   commit
+   checkout main
+   merge part2
+```
+the basic idea of version control is that your main branch should be working the whole time. What I would suggest is branch off main for the first part of the coursework then branch of that for each feature (such as creating the User class), when it works merge into part1 branch then do next feature etc, when part1 is done merge it to main then repeat with the next part
+
 ## Part 1: Simulation game for crypto SDPACoin
 ```mermaid
  ---
@@ -38,6 +69,6 @@ classDiagram
 - enter loop of days
   - call generatePrices(), this should update the CoinPrice and Electricity values using N(0.003, 0.0016)^3 and U(1.9, 2.1) to find the values
   - call sendToMiners(), this should distribute coin to miners going off the ratio User(NumOfMachines)/Market(Machines)
-  - all miners payElectricity() functions are called (this could maybe be triggered throught eh sendToMiners() method)
+  - all miners payElectricity() functions are called (this could maybe be triggered throught the sendToMiners() method)
   - ask for action; buy rig, buy coin, sell coin, nothing (this should call the update methods to ensure it is recorded)
  - at the end of the simulation print the results
